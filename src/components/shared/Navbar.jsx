@@ -485,4 +485,394 @@ export default function Navbar() {
             Become Seller
 
           </Link>
+                    {/* ================= Right Side ================= */}
+
+          <div
+            className="
+              hidden
+              lg:flex
+              items-center
+              gap-3
+            "
+          >
+
+            {/* Wishlist */}
+
+            <Link
+              href="/wishlist"
+              className="
+                relative
+                flex
+                items-center
+                justify-center
+                w-11
+                h-11
+                rounded-full
+                bg-white
+                border
+                border-[#D6EAF8]
+                text-[#0F172A]
+                hover:bg-[#E0F2FE]
+                hover:text-[#0284C7]
+                transition-all
+                duration-300
+              "
+            >
+
+              <FaHeart size={18} />
+
+              {wishlistCount > 0 && (
+
+                <span
+                  className="
+                    absolute
+                    -top-1
+                    -right-1
+                    w-5
+                    h-5
+                    rounded-full
+                    bg-red-500
+                    text-white
+                    text-[10px]
+                    flex
+                    items-center
+                    justify-center
+                    font-bold
+                  "
+                >
+                  {wishlistCount}
+                </span>
+
+              )}
+
+            </Link>
+
+            {/* Cart */}
+
+            <Link
+              href="/cart"
+              className="
+                relative
+                flex
+                items-center
+                justify-center
+                w-11
+                h-11
+                rounded-full
+                bg-white
+                border
+                border-[#D6EAF8]
+                text-[#0F172A]
+                hover:bg-[#E0F2FE]
+                hover:text-[#0284C7]
+                transition-all
+              "
+            >
+
+              <FaShoppingCart size={18} />
+
+              {cartCount > 0 && (
+
+                <span
+                  className="
+                    absolute
+                    -top-1
+                    -right-1
+                    w-5
+                    h-5
+                    rounded-full
+                    bg-[#0284C7]
+                    text-white
+                    text-[10px]
+                    flex
+                    items-center
+                    justify-center
+                    font-bold
+                  "
+                >
+                  {cartCount}
+                </span>
+
+              )}
+
+            </Link>
+
+            {/* Notifications */}
+
+            <div
+              ref={notificationRef}
+              className="relative"
+            >
+
+              <button
+                onClick={() =>
+                  setNotificationOpen(
+                    !notificationOpen
+                  )
+                }
+                className="
+                  relative
+                  flex
+                  items-center
+                  justify-center
+                  w-11
+                  h-11
+                  rounded-full
+                  bg-white
+                  border
+                  border-[#D6EAF8]
+                  text-[#0F172A]
+                  hover:bg-[#E0F2FE]
+                  hover:text-[#0284C7]
+                  transition-all
+                "
+              >
+
+                <FaBell size={18} />
+
+                {notificationCount > 0 && (
+
+                  <span
+                    className="
+                      absolute
+                      -top-1
+                      -right-1
+                      w-5
+                      h-5
+                      rounded-full
+                      bg-red-500
+                      text-white
+                      text-[10px]
+                      flex
+                      items-center
+                      justify-center
+                      font-bold
+                    "
+                  >
+                    {notificationCount}
+                  </span>
+
+                )}
+
+              </button>
+
+              {/* Notification Dropdown Part-6 */}
+
+            </div>
+
+            {/* Dark Mode */}
+
+            <button
+              onClick={() =>
+                setDarkMode(
+                  !darkMode
+                )
+              }
+              className="
+                flex
+                items-center
+                justify-center
+                w-11
+                h-11
+                rounded-full
+                bg-white
+                border
+                border-[#D6EAF8]
+                hover:bg-[#E0F2FE]
+                transition-all
+              "
+            >
+
+              {darkMode ? (
+
+                <FaSun
+                  className="
+                    text-yellow-500
+                  "
+                />
+
+              ) : (
+
+                <FaMoon
+                  className="
+                    text-[#0F172A]
+                  "
+                />
+
+              )}
+
+            </button>
+
+            {/* User */}
+
+            {user ? (
+
+              <div
+                ref={userMenuRef}
+                className="relative"
+              >
+
+                <button
+                  onClick={() =>
+                    setUserMenuOpen(
+                      !userMenuOpen
+                    )
+                  }
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                    rounded-full
+                    pl-2
+                    pr-4
+                    py-2
+                    bg-white
+                    border
+                    border-[#D6EAF8]
+                    hover:border-[#0284C7]
+                    transition-all
+                  "
+                >
+
+                  {user.image ? (
+
+                    <Image
+                      src={user.image}
+                      alt={user.name}
+                      width={42}
+                      height={42}
+                      className="
+                        rounded-full
+                        object-cover
+                      "
+                    />
+
+                  ) : (
+
+                    <FaUserCircle
+                      size={42}
+                      className="
+                        text-[#0284C7]
+                      "
+                    />
+
+                  )}
+
+                  <div
+                    className="
+                      text-left
+                    "
+                  >
+
+                    <h4
+                      className="
+                        text-sm
+                        font-bold
+                        text-[#0F172A]
+                      "
+                    >
+                      {user.name}
+                    </h4>
+
+                    <p
+                      className="
+                        text-xs
+                        text-slate-500
+                      "
+                    >
+                      {user.role}
+                    </p>
+
+                  </div>
+
+                  <FaChevronDown />
+
+                </button>
+
+                {/* User Dropdown Part-5 */}
+
+              </div>
+
+            ) : (
+
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-3
+                "
+              >
+
+                <Link
+                  href="/login"
+                  className="
+                    px-5
+                    py-2.5
+                    rounded-full
+                    border
+                    border-[#0284C7]
+                    text-[#0284C7]
+                    font-semibold
+                    hover:bg-[#E0F2FE]
+                    transition
+                  "
+                >
+                  Login
+                </Link>
+
+                <Link
+                  href="/register"
+                  className="
+                    px-5
+                    py-2.5
+                    rounded-full
+                    bg-[#0284C7]
+                    hover:bg-[#0369A1]
+                    text-white
+                    font-semibold
+                    transition
+                  "
+                >
+                  Register
+                </Link>
+
+              </div>
+
+            )}
+
+            {/* Mobile Menu */}
+
+            <button
+              onClick={() =>
+                setMenuOpen(
+                  !menuOpen
+                )
+              }
+              className="
+                lg:hidden
+                flex
+                items-center
+                justify-center
+                w-11
+                h-11
+                rounded-xl
+                bg-white
+                border
+                border-[#D6EAF8]
+              "
+            >
+
+              {menuOpen ? (
+
+                <FaTimes size={20} />
+
+              ) : (
+
+                <FaBars size={20} />
+
+              )}
+
+            </button>
+
+          </div>
           
